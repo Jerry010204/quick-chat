@@ -1,0 +1,96 @@
+.chat-input-holder {
+    padding: 2px;
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    right: 14%;
+}
+
+.chat-input-holder2 {
+    padding: 2px;
+    position: absolute;
+    top: 60%;
+    left: 5%;
+    right: 70%;
+}
+
+.chat-input-textarea {
+    background-color: #40414f;
+    width: 95%;
+    border-radius: 5px;
+    border: none;
+    border-color: none;
+    outline: none;
+    padding: 10px;
+    color: white;
+    font-size: 1em;
+    box-shadow: 0 0px 8px 0 rgba(0,0, 0, 0.5);
+}
+
+.chat-log{
+    position: absolute;
+    top: 55px;
+    bottom: 18%;
+    width: 100%;
+    text-align:left;
+    overflow: auto;
+}
+
+.chat-message{
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 4%;
+    font-size:medium;
+    color:white;
+    overflow: auto;
+    word-wrap: break-word; 
+    padding-bottom: 20px;
+
+}
+
+.chat-message.chatgpt {
+    color:white;
+    background-color: rgba(255,255,255,0.1);
+
+}
+
+.lastChat {
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 4%;
+    font-size:medium;
+    color:white;
+    overflow: auto;
+    word-wrap: break-word; 
+    padding-bottom: 20px;
+    color:white;
+    background-color: rgba(255,255,255,0.1);
+}
+
+.chat-message-center{
+    max-width: 1000px;
+}
+
+.avatar{
+    display: "block";
+    border-radius: 7px;
+    width:30px;
+    height:30px;
+    margin-bottom: 3px;
+}
+
+.avatar2{
+    display: "block";
+    border-radius: 7px;
+    width:30px;
+    height:30px;
+    margin-bottom: 3px;
+}
+
+.currentTime{
+    color: rgb(218, 213, 213);
+    font-size: 12px;
+    position: absolute;
+    right: 10px;
+}
+
