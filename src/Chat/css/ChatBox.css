@@ -14,6 +14,14 @@
     right: 70%;
 }
 
+.chat-input-holder3 {
+    padding: 2px;
+    position: absolute;
+    top: 60%;
+    left: 40%;
+    right: 16%;
+}
+
 .chat-input-textarea {
     background-color: #40414f;
     width: 95%;

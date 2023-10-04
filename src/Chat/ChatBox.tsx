@@ -20,6 +20,8 @@ function ChatBox() {
   const [loading, setLoading] = useState<boolean>(false);
   const [dots, setDots] = useState(".");
   const PINS: string[] = ["jacky", "jerry"];
+  const [apiKey, setAPIKey] = useState<string>("");
+  const [currentApiKey, setCurrentAPIKey] = useState<string>("");
 
   const current = new Date();
   const fakeChatLog = [
@@ -97,8 +99,7 @@ function ChatBox() {
     const response = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
       headers: {
-        Authorization:
-          "Bearer " + "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",
+        Authorization: "Bearer " + apiKey,
         "Content-Type": "application/json",
       },
       body: JSON.stringify(apiRequestBody),
@@ -201,6 +202,12 @@ function ChatBox() {
     setPIN(currentPIN);
   };
 
+  const handleSubmitAPI = async (e: FormEvent, currentPIN: string) => {
+    e.preventDefault();
+    setCurrentAPIKey("");
+    setAPIKey(currentApiKey);
+  };
+
   const handleClick = async (input: string) => {
     if (onType === false) {
       await processMessageToChatGPT(input);
@@ -276,7 +283,7 @@ function ChatBox() {
               value={currentPIN}
               onChange={(e) => setCurrentPIN(e.currentTarget.value)}
               className="chat-input-textarea"
-              placeholder="update your PIN"
+              placeholder={`Your PIN: ${PIN}`}
             ></input>
           </form>
           <GiPlayButton
@@ -287,19 +294,34 @@ function ChatBox() {
               fontSize: "150%",
               color: "white",
             }}
-            onClick={() => setPIN(currentPIN)}
+            onClick={() => {
+              setPIN(currentPIN);
+              setCurrentPIN("");
+            }}
           />
-          <div
+        </div>
+        <div className="chat-input-holder3">
+          <form onSubmit={(e) => handleSubmitAPI(e, currentApiKey)}>
+            <input
+              value={currentApiKey}
+              onChange={(e) => setCurrentAPIKey(e.currentTarget.value)}
+              className="chat-input-textarea"
+              placeholder={`Your KEY: ${apiKey}`}
+            ></input>
+          </form>
+          <GiPlayButton
             style={{
               position: "absolute",
-              bottom: "10px",
-              right: "-280px",
-              width: "220px",
-              color: "grey",
+              bottom: "30%",
+              right: "-40px",
+              fontSize: "150%",
+              color: "white",
             }}
-          >
-            Current PIN: {PIN}
-          </div>
+            onClick={() => {
+              setAPIKey(currentApiKey);
+              setCurrentAPIKey("");
+            }}
+          />
         </div>
       </div>
     </>
