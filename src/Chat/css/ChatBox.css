@@ -45,15 +45,16 @@
 }
 
 .chat-message{
-    padding-top: 10px;
-    padding-left: 10px;
+    padding-top: 12px;
+    padding-left: 26px;
     padding-right: 4%;
     font-size:medium;
     color:white;
     overflow: auto;
     word-wrap: break-word; 
     padding-bottom: 20px;
-
+    font-size: 22px;
+    line-height: 26px;
 }
 
 .chat-message.chatgpt {
