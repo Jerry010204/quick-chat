@@ -14,12 +14,9 @@ interface chat {
 }
 function ChatBox() {
   const [input, setInput] = useState<string>("");
-  const [currentPIN, setCurrentPIN] = useState<string>("");
-  const [PIN, setPIN] = useState<string>("");
   const [onType, setOnType] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   const [dots, setDots] = useState(".");
-  const PINS: string[] = ["jacky", "jerry"];
   const [apiKey, setAPIKey] = useState<string>("");
   const [currentApiKey, setCurrentAPIKey] = useState<string>("");
 
@@ -58,10 +55,6 @@ function ChatBox() {
   }, []);
 
   async function processMessageToChatGPT(input: string) {
-    if (!PINS.includes(PIN)) {
-      return;
-    }
-
     const apiRequestBody = {
       model: "gpt-4",
       messages: chatLog
@@ -196,13 +189,7 @@ function ChatBox() {
     }
   };
 
-  const handleSubmitPIN = async (e: FormEvent, currentPIN: string) => {
-    e.preventDefault();
-    setCurrentPIN("");
-    setPIN(currentPIN);
-  };
-
-  const handleSubmitAPI = async (e: FormEvent, currentPIN: string) => {
+  const handleSubmitAPI = async (e: FormEvent) => {
     e.preventDefault();
     setCurrentAPIKey("");
     setAPIKey(currentApiKey);
@@ -277,31 +264,8 @@ function ChatBox() {
             onClick={() => handleClick(input)}
           />
         </div>
-        <div className="chat-input-holder2">
-          <form onSubmit={(e) => handleSubmitPIN(e, currentPIN)}>
-            <input
-              value={currentPIN}
-              onChange={(e) => setCurrentPIN(e.currentTarget.value)}
-              className="chat-input-textarea"
-              placeholder={`Your PIN: ${PIN}`}
-            ></input>
-          </form>
-          <GiPlayButton
-            style={{
-              position: "absolute",
-              bottom: "30%",
-              right: "-40px",
-              fontSize: "150%",
-              color: "white",
-            }}
-            onClick={() => {
-              setPIN(currentPIN);
-              setCurrentPIN("");
-            }}
-          />
-        </div>
         <div className="chat-input-holder3">
-          <form onSubmit={(e) => handleSubmitAPI(e, currentApiKey)}>
+          <form onSubmit={(e) => handleSubmitAPI(e)}>
             <input
               value={currentApiKey}
               onChange={(e) => setCurrentAPIKey(e.currentTarget.value)}
